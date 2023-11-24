@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@channels/domain": ["libs/channels/domain/src/index.ts"],
+      "@channels/feature-channel-list": [
+        "libs/channels/feature-channel-list/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
