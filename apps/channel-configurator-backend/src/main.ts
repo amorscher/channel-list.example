@@ -3,6 +3,7 @@
  * This is only a minimal backend to get started.
  */
 
+import { Channel } from '@channels/domain';
 import express from 'express';
 import * as path from 'path';
 
@@ -12,6 +13,18 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to channel-configurator-backend!' });
+});
+
+app.get('/api/channels', (req, res) => {
+
+  const channels:Channel[]= [];
+  //lets create 100 channels for testing
+  for (let index = 0; index < 100; index++) {
+    console.log("adlaskjdlasjdlasjd");
+    const channel:Channel = {id:index,name:`Name${index}`, description:`desc${index}`,type:"DI"};
+    channels.push(channel);
+  }
+  res.send(channels);
 });
 
 const port = process.env.PORT || 3333;

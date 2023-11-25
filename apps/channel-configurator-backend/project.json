@@ -53,5 +53,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["domain:channels", "type:util"]
 }
