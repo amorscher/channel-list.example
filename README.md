@@ -19,7 +19,7 @@ A Channel can be seen as an electrical signal like a digital output/input or ana
 For following concepts examples are provided:
 
  - [Multi-user](docs/multi-user.md) support syncing state btw. different instances of the application
- - Statemanagement using [NGRX]()
+ - Statemanagement using [NGRX](https://ngrx.io/)
  - Monorepo setup and structure using [NX](https://nx.dev/)
  - Architecture using DDD Concepts and libraries (Many THX to [Manfred Steyer](https://github.com/manfredsteyer) for his great work on that topic)
    - layers
