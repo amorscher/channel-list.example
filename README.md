@@ -1,5 +1,5 @@
 # Channel Configurator
-<font size=3>**❗Important❗**: The code in this repository is not applicable for production. It acts as an example for implementing various technical concepts like Multi-User support, Pagination, CI... needed in an "modern" Angular based web application, as well as for providing such an application using modern built tools</font>
+<font size=3>**❗Important❗**: The code in this repository is not applicable for production. It acts as an example for implementing various technical concepts like Multi-User support, Pagination, CI, ... needed in an "modern" Angular based engineering application, as well as for providing such an application using modern build tools</font>
 
 This repo can be used as an example for setting up large scale angular application.
 
@@ -13,7 +13,7 @@ The example application itself is a multi user angular application to configure 
 Its about configuring a specific Hardware Device. The hardware device consists of different channels.
 A Channel can be seen as an electrical signal like a digital output/input or analog output/input. See a small conceptual model of the domain
 
-![Domain-Model](docs/domain-model.svg)
+![Domain-Model](docs/domain-model.png)
 
 ## Covered Concepts
 For following concepts examples are provided:
@@ -21,11 +21,11 @@ For following concepts examples are provided:
  - [Multi-user](docs/multi-user.md) support syncing state btw. different instances of the application
  - Statemanagement using [NGRX]()
  - Monorepo setup and structure using [NX](https://nx.dev/)
- - Architecture using DDD Concepts and libraries (Many THX to [Manfred Steyer](https://github.com/manfredsteyer) for his incredible work on that topic)
+ - Architecture using DDD Concepts and libraries (Many THX to [Manfred Steyer](https://github.com/manfredsteyer) for his great work on that topic)
    - layers
    - domains
  - Polling Data
- - REST API using OpenAPI and Swagger for realsation
+ - REST API using OpenAPI and Swagger for realisation
  - Reactive Architecure using Signals and RXJS
 
 ## Code Structure
