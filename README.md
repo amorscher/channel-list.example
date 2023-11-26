@@ -1,8 +1,14 @@
 # Channel Configurator
 
-<font size=3>**❗Important❗**: The code in this repository is not applicable for production. It acts as an example for implementing various technical concepts like Multi-User support, Pagination, CI, ... needed in an "modern" Angular based engineering application, as well as for providing such an application using modern build tools</font>
+<font size=3>**❗Important❗** The code in this repository is not applicable for production. It acts as an example for implementing various technical concepts like Multi-User support, Pagination, CI, ... needed in an "modern" Angular based engineering application, as well as for providing such an application using modern build tools</font>
 
 This repo can be used as an example for setting up large scale angular application.
+
+## Running the example app
+
+Use following command to run the example:
+
+> npx nx serve-test channels-configurator-frontend
 
 ## Repository Setup
 
@@ -12,8 +18,8 @@ This repo is a monorepo built using [NX](https://nx.dev/). Many thanks to [NRWL]
 
 The example application itself is a multi user angular application to configure some channels which have certain properties.
 
-Its about configuring a specific Hardware Device. The hardware device consists of different channels.
-A Channel can be seen as an electrical signal like a digital output/input or analog output/input. See a small conceptual model of the domain
+Its about configuring a specific hardware device. The hardware device consists of different channels.
+A Channel can be seen as an electrical signal like a digital output/input or analog output/input. See a small conceptual model of the domain.
 
 ![Domain-Model](docs/domain-model.png)
 

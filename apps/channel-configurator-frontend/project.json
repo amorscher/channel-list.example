@@ -64,6 +64,18 @@
                 "proxyConfig": "apps/channel-configurator-frontend/proxy.conf.json"
             }
         },
+
+        "serve-test": {
+            "executor": "nx:run-commands",
+            "options": {
+                "commands": [
+                    "npx nx serve channel-configurator-frontend",
+                    "npx nx serve channel-configurator-backend"
+                ],
+                "parallel": true
+            }
+        },
+
         "extract-i18n": {
             "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
