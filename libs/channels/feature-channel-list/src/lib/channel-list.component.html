@@ -1,9 +1,11 @@
 <h1>channels-channel-list</h1>
 
-<table class="table">
-  <tr *ngFor="let channel of channelList$ | async">
+<table class="table" >
+  @for (channel of channelList$ | async; track channel.id) {
+  <tr>
     <td>{{ channel.id }}</td>
     <td>{{ channel.name }}</td>
     <td>{{ channel.description }}</td>
   </tr>
+  }
 </table>

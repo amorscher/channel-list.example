@@ -9,6 +9,8 @@ import * as path from 'path';
 
 const app = express();
 
+const producedChannels = 1_000;
+
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/api', (req, res) => {
@@ -19,8 +21,7 @@ app.get('/api/channels', (req, res) => {
 
   const channels:Channel[]= [];
   //lets create 100 channels for testing
-  for (let index = 0; index < 100; index++) {
-    console.log("adlaskjdlasjdlasjd");
+  for (let index = 0; index < producedChannels; index++) {
     const channel:Channel = {id:index,name:`Name${index}`, description:`desc${index}`,type:"DI"};
     channels.push(channel);
   }
