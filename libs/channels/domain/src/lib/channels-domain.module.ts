@@ -6,13 +6,13 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    StoreModule.forFeature(
-      fromChannel.CHANNEL_FEATURE_KEY,
-      fromChannel.reducer
-    ),
-    EffectsModule.forFeature([ChannelEffects]),
-  ],
+    imports: [
+        CommonModule,
+        StoreModule.forFeature(
+            fromChannel.CHANNEL_FEATURE_KEY,
+            fromChannel.reducer
+        ),
+        EffectsModule.forFeature([ChannelEffects]),
+    ],
 })
 export class ChannelsDomainModule {}

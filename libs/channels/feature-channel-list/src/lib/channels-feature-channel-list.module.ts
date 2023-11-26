@@ -4,8 +4,8 @@ import { ChannelsDomainModule } from '@channels/domain';
 import { ChannelListComponent } from './channel-list.component';
 
 @NgModule({
-  imports: [CommonModule, ChannelsDomainModule],
-  declarations: [ChannelListComponent],
-  exports: [ChannelListComponent],
+    imports: [CommonModule, ChannelsDomainModule],
+    declarations: [ChannelListComponent],
+    exports: [ChannelListComponent],
 })
 export class ChannelsFeatureChannelListModule {}

@@ -7,23 +7,25 @@ import { ChannelDataService } from '../../infrastructure/channel.data.service';
 
 @Injectable()
 export class ChannelEffects {
-  loadChannel$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ChannelActions.loadChannel),
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      switchMap((action) =>
-        this.channelDataService.load().pipe(
-          map((channel) => ChannelActions.loadChannelSuccess({ channel })),
-          catchError((error) =>
-            of(ChannelActions.loadChannelFailure({ error }))
-          )
+    loadChannel$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(ChannelActions.loadChannel),
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            switchMap((action) =>
+                this.channelDataService.load().pipe(
+                    map((channel) =>
+                        ChannelActions.loadChannelSuccess({ channel })
+                    ),
+                    catchError((error) =>
+                        of(ChannelActions.loadChannelFailure({ error }))
+                    )
+                )
+            )
         )
-      )
-    )
-  );
+    );
 
-  constructor(
-    private actions$: Actions,
-    private channelDataService: ChannelDataService
-  ) {}
+    constructor(
+        private actions$: Actions,
+        private channelDataService: ChannelDataService
+    ) {}
 }
