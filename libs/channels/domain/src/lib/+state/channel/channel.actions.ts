@@ -10,5 +10,5 @@ export const loadChannelSuccess = createAction(
 
 export const loadChannelFailure = createAction(
   '[Channel] Load Channel Failure',
-  props<{ error: unknown }>()
+  props<{ error: string | null }>()
 );
