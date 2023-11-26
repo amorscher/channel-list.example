@@ -9,7 +9,7 @@ import * as path from 'path';
 
 const app = express();
 
-const producedChannels = 1_000;
+const producedChannels = process.env.NR_CHANNELS ? parseInt(process.env.NR_CHANNELS) : 1_000;
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
