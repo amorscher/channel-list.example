@@ -9,32 +9,32 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        HttpClientModule,
-        ChannelsFeatureChannelListModule,
-        EffectsModule.forRoot([]),
-        StoreModule.forRoot(),
-        ChannelsDomainModule,
-      ],
-      declarations: [AppComponent, NxWelcomeComponent],
-    }).compileComponents();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [
+                RouterTestingModule,
+                HttpClientModule,
+                ChannelsFeatureChannelListModule,
+                EffectsModule.forRoot([]),
+                StoreModule.forRoot(),
+                ChannelsDomainModule,
+            ],
+            declarations: [AppComponent, NxWelcomeComponent],
+        }).compileComponents();
+    });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'channels-channel-list'
-    );
-  });
+    it('should render title', () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
+        const compiled = fixture.nativeElement as HTMLElement;
+        expect(compiled.querySelector('h1')?.textContent).toContain(
+            'channels-channel-list'
+        );
+    });
 
-  it(`should have as title 'channels'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('channels');
-  });
+    it(`should have as title 'channels'`, () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.componentInstance;
+        expect(app.title).toEqual('channels');
+    });
 });
