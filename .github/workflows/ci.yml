@@ -29,4 +29,4 @@ jobs:
     - run: npm ci
     - run: npx nx run-many -t lint
     - run: npx nx run-many -t build
-    - run: npm nx run-many -t test
+    - run: npx nx run-many -t test
