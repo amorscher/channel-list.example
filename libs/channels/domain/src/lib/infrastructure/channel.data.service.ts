@@ -5,13 +5,11 @@ import { Channel } from '../entities/channel';
 
 @Injectable({ providedIn: 'root' })
 export class ChannelDataService {
+    constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {}
-
-  load(): Observable<Channel[]> {
+    load(): Observable<Channel[]> {
         const url = '/api/channels';
         const headers = new HttpHeaders().set('Accept', 'application/json');
-        return this.http.get<Channel[]>(url, { headers});
-
-  }
+        return this.http.get<Channel[]>(url, { headers });
+    }
 }

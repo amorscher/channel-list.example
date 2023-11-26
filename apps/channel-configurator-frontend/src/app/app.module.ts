@@ -11,20 +11,20 @@ import { ChannelsFeatureChannelListModule } from '@channels/feature-channel-list
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes),
-    StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument({
-      name: 'Channels App',
-      logOnly: isDevMode(),
-    }),
-    EffectsModule.forRoot(),
-    ChannelsFeatureChannelListModule,
-    HttpClientModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, NxWelcomeComponent],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(appRoutes),
+        StoreModule.forRoot({}),
+        StoreDevtoolsModule.instrument({
+            name: 'Channels App',
+            logOnly: isDevMode(),
+        }),
+        EffectsModule.forRoot(),
+        ChannelsFeatureChannelListModule,
+        HttpClientModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
