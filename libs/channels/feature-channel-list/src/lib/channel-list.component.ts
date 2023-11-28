@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChannelListFacade } from '@channels/domain';
+import { Channel, ChannelListFacade } from '@channels/domain';
 
 @Component({
     selector: 'channels-channel-list',
@@ -7,6 +7,12 @@ import { ChannelListFacade } from '@channels/domain';
     styleUrls: ['./channel-list.component.scss'],
 })
 export class ChannelListComponent implements OnInit {
+    virtualScrollConfig = {
+        itemSizeInPx: 25,
+        sizeInPx: 500,
+        minBufferInPx: 100,
+        maxBufferInPx: 150,
+    };
     channelList$ = this.channelListFacade.channelList$;
 
     constructor(private channelListFacade: ChannelListFacade) {}
@@ -17,5 +23,9 @@ export class ChannelListComponent implements OnInit {
 
     load(): void {
         this.channelListFacade.load();
+    }
+
+    trackBy(index: number, item: Channel): number {
+        return item.id;
     }
 }
