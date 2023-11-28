@@ -17,7 +17,7 @@ export interface ChannelPartialState {
 }
 
 export const channelAdapter: EntityAdapter<Channel> =
-    createEntityAdapter<Channel>();
+    createEntityAdapter<Channel>({ sortComparer: (a, b) => b.id - a.id }); // ok we sort at the top
 
 export const initialState: State = channelAdapter.getInitialState({
     // set initial required properties
@@ -35,6 +35,19 @@ const channelReducer = createReducer(
         channelAdapter.upsertMany(channel, { ...state, loaded: true })
     ),
     on(ChannelActions.loadChannelFailure, (state, { error }) => ({
+        ...state,
+        error,
+    })),
+    on(ChannelActions.addChannel, (state) => {
+        return {
+            ...state,
+            error: null,
+        };
+    }),
+    on(ChannelActions.addChannelSuccess, (state, { newChannel }) =>
+        channelAdapter.addOne(newChannel, { ...state })
+    ),
+    on(ChannelActions.addChannelFailure, (state, { error }) => ({
         ...state,
         error,
     }))

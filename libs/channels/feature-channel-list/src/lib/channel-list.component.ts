@@ -28,4 +28,13 @@ export class ChannelListComponent implements OnInit {
     trackBy(index: number, item: Channel): number {
         return item.id;
     }
+
+    addChannel() {
+        this.channelListFacade.addChannel({
+            id: -1,
+            name: 'defaultName',
+            description: 'defaultDesc',
+            type: 'DigitalInput',
+        });
+    }
 }

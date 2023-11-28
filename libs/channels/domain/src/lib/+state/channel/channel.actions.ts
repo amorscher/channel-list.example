@@ -12,3 +12,18 @@ export const loadChannelFailure = createAction(
     '[Channel] Load Channel Failure',
     props<{ error: string | null }>()
 );
+
+export const addChannel = createAction(
+    '[Channel] Add Channel',
+    props<{ newChannel: Channel }>()
+);
+
+export const addChannelSuccess = createAction(
+    '[Channel] Add Channel Success',
+    props<{ newChannel: Channel }>()
+);
+
+export const addChannelFailure = createAction(
+    '[Channel] Add Channel Failure',
+    props<{ error: string | null }>()
+);

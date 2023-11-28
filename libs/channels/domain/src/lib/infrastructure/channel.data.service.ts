@@ -12,4 +12,10 @@ export class ChannelDataService {
         const headers = new HttpHeaders().set('Accept', 'application/json');
         return this.http.get<Channel[]>(url, { headers });
     }
+    add(newChannel: Channel) {
+        const url = '/api/channels';
+        const headers = new HttpHeaders().set('Accept', 'application/json');
+        headers.set('Content-type', 'application/json');
+        return this.http.post<Channel>(url, newChannel, { headers });
+    }
 }
