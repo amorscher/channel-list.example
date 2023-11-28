@@ -1,11 +1,22 @@
 <h1>channels-channel-list</h1>
 
-<table class="table">
-    @for (channel of channelList$ | async; track channel.id) {
-    <tr>
-        <td>{{ channel.id }}</td>
-        <td>{{ channel.name }}</td>
-        <td>{{ channel.description }}</td>
-    </tr>
-    }
-</table>
+<cdk-virtual-scroll-viewport
+    [itemSize]="virtualScrollConfig.itemSizeInPx"
+    class="channel-list-viewport"
+    [ngStyle]="{ height: virtualScrollConfig.sizeInPx + 'px' }"
+    [minBufferPx]="virtualScrollConfig.minBufferInPx"
+    [maxBufferPx]="virtualScrollConfig.maxBufferInPx"
+    ><table class="channel-list-table">
+        <tr
+            class="channel-list-row"
+            *cdkVirtualFor="
+                let channel of channelList$ | async;
+                trackBy: trackBy
+            "
+        >
+            <td class="channel-list-cell">{{ channel.id }}</td>
+            <td class="channel-list-cell">{{ channel.name }}</td>
+            <td class="channel-list-cell">{{ channel.description }}</td>
+        </tr>
+    </table>
+</cdk-virtual-scroll-viewport>

@@ -16,6 +16,7 @@ export class ChannelEffects {
                     map((channel) =>
                         ChannelActions.loadChannelSuccess({ channel })
                     ),
+
                     catchError((error) =>
                         of(ChannelActions.loadChannelFailure({ error }))
                     )

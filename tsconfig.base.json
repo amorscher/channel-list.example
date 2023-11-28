@@ -18,7 +18,8 @@
             "@channels/domain": ["libs/channels/domain/src/index.ts"],
             "@channels/feature-channel-list": [
                 "libs/channels/feature-channel-list/src/index.ts"
-            ]
+            ],
+            "@channels/test-utils": ["libs/shared/util-test/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

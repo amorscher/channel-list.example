@@ -1,12 +1,22 @@
-.table {
-    height: 500px;
-    border: 1px solid;
+.channel-list-table {
+    height: 100%;
     padding: 10px;
-    overflow-y: scroll;
     display: block;
 }
 
-.td {
+.channel-list-viewport {
+    // overflow-y: scroll;
     border: 1px solid;
-    padding: 10px;
+}
+
+.channel-list-cell {
+    width: 10%;
+}
+
+.channel-list-row {
+    height: 25px;
+}
+
+tr:hover td {
+    background-color: grey; /* or #000 */
 }
