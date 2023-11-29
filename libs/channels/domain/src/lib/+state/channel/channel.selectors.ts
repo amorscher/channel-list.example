@@ -43,3 +43,8 @@ export const getSelected = createSelector(
     getSelectedId,
     (entities, selectedId) => selectedId && entities[selectedId]
 );
+
+export const getUsedIds = createSelector(
+    getChannelState,
+    (state: State) => state.ids
+);
