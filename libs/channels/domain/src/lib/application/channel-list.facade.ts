@@ -6,6 +6,10 @@ import * as fromChannel from '../+state/channel/channel.reducer';
 import * as ChannelSelectors from '../+state/channel/channel.selectors';
 import { Channel } from '../entities/channel';
 
+/**
+ * Facade for the domain.
+ * All application logic is made available through this faced
+ */
 @Injectable({ providedIn: 'root' })
 export class ChannelListFacade {
     loaded$ = this.store.pipe(select(ChannelSelectors.getChannelLoaded));
@@ -15,10 +19,17 @@ export class ChannelListFacade {
 
     constructor(private store: Store<fromChannel.ChannelPartialState>) {}
 
+    /**
+     * Loads all the channels
+     */
     load(): void {
         this.store.dispatch(loadChannel());
     }
 
+    /**
+     * Adds the given channel
+     * @param newChannel
+     */
     addChannel(newChannel: Channel) {
         this.store.dispatch(addChannel({ newChannel }));
     }

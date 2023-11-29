@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Channel } from '../entities/channel';
 
+/**
+ * Does all the REST stuff with the backend
+ */
 @Injectable({ providedIn: 'root' })
 export class ChannelDataService {
     constructor(private http: HttpClient) {}
