@@ -2,5 +2,9 @@
     "/api": {
         "target": "http://localhost:3333",
         "secure": false
+    },
+    "/api/sync": {
+        "target": "http://localhost:3333",
+        "secure": false
     }
 }

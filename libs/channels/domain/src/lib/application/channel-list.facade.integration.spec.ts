@@ -7,7 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Observable, of, take, lastValueFrom } from 'rxjs';
-import { Channel } from '../entities/channel';
+import { Channel } from '@channels/domain/entities';
 import { ChannelListFacade } from './channel-list.facade';
 import { ChannelsDomainModule } from '../channels-domain.module';
 import { ChannelDataService } from '../infrastructure/channel.data.service';
@@ -82,11 +82,12 @@ describe('ChannelListFacade.integration', () => {
             type: 'DigitalInput',
         });
 
-        //THEN --> we have 200 +1 channels loaded
+        //THEN --> we have 200 channels loaded
         tick();
         const newChannels = await lastValueFrom(
             itemUnderTest.channelList$.pipe(take(1))
         );
-        expect(newChannels.length).toBe(201);
+        //still 200 as this will be synced using a socket
+        expect(newChannels.length).toBe(200);
     }));
 });

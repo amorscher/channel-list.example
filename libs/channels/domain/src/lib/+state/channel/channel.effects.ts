@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+
 import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as ChannelActions from './channel.actions';
 import { ChannelDataService } from '../../infrastructure/channel.data.service';
 import { ChannelPartialState } from './channel.reducer';
 import * as ChannelSelectors from './channel.selectors';
+import { ChannelDataSyncService } from '../../infrastructure/channel.data.sync.service';
 
 @Injectable()
 export class ChannelEffects {
@@ -31,16 +33,10 @@ export class ChannelEffects {
         this.actions$.pipe(
             ofType(ChannelActions.addChannel),
             withLatestFrom(this.store.select(ChannelSelectors.getUsedIds)),
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             switchMap(([action, ids]) =>
                 this.channelDataService.add(action.newChannel).pipe(
-                    map(() =>
-                        ChannelActions.addChannelSuccess({
-                            newChannel: {
-                                ...action.newChannel,
-                                id: ids.length + 1,
-                            },
-                        })
-                    ),
+                    map(() => ChannelActions.ngrxNoopAction()),
                     catchError((error) =>
                         of(ChannelActions.addChannelFailure({ error }))
                     )
@@ -52,6 +48,9 @@ export class ChannelEffects {
     constructor(
         private actions$: Actions,
         private channelDataService: ChannelDataService,
-        private store: Store<ChannelPartialState>
-    ) {}
+        private store: Store<ChannelPartialState>,
+        private syncService: ChannelDataSyncService
+    ) {
+        this.syncService.initSync();
+    }
 }

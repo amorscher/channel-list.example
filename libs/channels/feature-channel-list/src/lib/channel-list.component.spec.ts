@@ -8,7 +8,6 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import {
-    Channel,
     ChannelDataService,
     ChannelListFacade,
     ChannelsDomainModule,
@@ -28,6 +27,7 @@ import {
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
 import { dispatchFakeEvent } from '@channels/test-utils';
+import { Channel } from '@channels/domain/entities';
 
 class ChannelDataServiceMock {
     constructor(private numberOfChannels = 200) {}
