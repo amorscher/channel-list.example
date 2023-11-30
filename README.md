@@ -44,7 +44,10 @@ For following concepts examples are provided:
     -   `channels-config-backend` is an express based backend
 -   **libs**
     -   `channels`
+        -   `entities` containing all entities used in the frontend and the backend. It also contains sync actions which are used to sync state btw. different client intances
         -   `domain` containing ngrx based state and http client implementions to get data from backend
         -   `feature-channel-list` containing an implementation of a list based component showing all channels
+    -   `shared` all shared libs used in different domains
+        -   `util-test` contains general test utilities
 
 ## General Notes:
