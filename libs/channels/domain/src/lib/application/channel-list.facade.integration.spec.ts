@@ -7,7 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Observable, of, take, lastValueFrom } from 'rxjs';
-import { Channel } from '@channels/domain/entities';
+import { Channel } from '@channels/domain-entities';
 import { ChannelListFacade } from './channel-list.facade';
 import { ChannelsDomainModule } from '../channels-domain.module';
 import { ChannelDataService } from '../infrastructure/channel.data.service';

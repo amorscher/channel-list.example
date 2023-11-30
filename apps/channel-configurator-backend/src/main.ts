@@ -3,7 +3,7 @@
  * This is only a minimal backend to get started.
  */
 
-import { Channel, createAddChannelSyncAction } from '@channels/domain/entities';
+import { Channel, createAddChannelSyncAction } from '@channels/domain-entities';
 import express from 'express';
 import * as path from 'path';
 import { Server } from 'http';

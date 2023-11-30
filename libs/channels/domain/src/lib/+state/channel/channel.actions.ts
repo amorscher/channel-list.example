@@ -3,7 +3,7 @@ import {
     ADD_CHANNEL_SUCCESS_ACTION,
     AddChannelSuccessActionParams,
     Channel,
-} from '@channels/domain/entities';
+} from '@channels/domain-entities';
 
 export const loadChannel = createAction('[Channel] Load Channel');
 

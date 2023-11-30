@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChannelListFacade } from '@channels/domain';
-import { Channel } from '@channels/domain/entities';
+import { Channel } from '@channels/domain-entities';
 
 @Component({
     selector: 'channels-channel-list',

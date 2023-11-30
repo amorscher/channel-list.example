@@ -16,7 +16,7 @@
         "baseUrl": ".",
         "paths": {
             "@channels/domain": ["libs/channels/domain/src/index.ts"],
-            "@channels/domain/entities": [
+            "@channels/domain-entities": [
                 "libs/channels/entities/src/index.ts"
             ],
             "@channels/feature-channel-list": [

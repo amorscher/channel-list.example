@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
-import { SyncAction } from '@channels/domain/entities';
+import { SyncAction } from '@channels/domain-entities';
 import { Store } from '@ngrx/store';
 import { ChannelPartialState } from '../+state/channel/channel.reducer';
 import * as ChannelActions from '../+state/channel/channel.actions';

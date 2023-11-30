@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { loadChannel, addChannel } from '../+state/channel/channel.actions';
 import * as fromChannel from '../+state/channel/channel.reducer';
 import * as ChannelSelectors from '../+state/channel/channel.selectors';
-import { Channel } from '@channels/domain/entities';
+import { Channel } from '@channels/domain-entities';
 
 /**
  * Facade for the domain.

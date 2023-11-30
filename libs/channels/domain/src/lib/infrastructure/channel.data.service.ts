@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Channel } from '@channels/domain/entities';
+import { Channel } from '@channels/domain-entities';
 
 /**
  * Does all the REST stuff with the backend
