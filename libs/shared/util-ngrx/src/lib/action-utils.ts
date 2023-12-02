@@ -12,7 +12,7 @@ import {
 export const syncedActions: Map<
     string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ActionCreator<string, (props: object) => object & Action>
+    ActionCreator<string, (props: any) => any & Action>
 > = new Map();
 
 /**

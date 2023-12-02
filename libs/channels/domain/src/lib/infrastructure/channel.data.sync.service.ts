@@ -13,9 +13,9 @@ export class ChannelDataSyncService {
     /**
      * stream of actions which are dispatched
      */
-    dispatchedActions$: BehaviorSubject<object & Action> = new BehaviorSubject(
-        ngrxNoopAction()
-    );
+    dispatchedActions$: BehaviorSubject<object & Action> = new BehaviorSubject<
+        object & Action
+    >(ngrxNoopAction());
 
     /**
      * The socket for sync communication
