@@ -9,6 +9,7 @@ import { ChannelDataService } from '../../infrastructure/channel.data.service';
 import { ChannelPartialState } from './channel.reducer';
 import * as ChannelSelectors from './channel.selectors';
 import { ChannelDataSyncService } from '../../infrastructure/channel.data.sync.service';
+import { ngrxNoopAction } from '@channels/util-ngrx';
 
 @Injectable()
 export class ChannelEffects {
@@ -36,7 +37,8 @@ export class ChannelEffects {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             switchMap(([action, ids]) =>
                 this.channelDataService.add(action.newChannel).pipe(
-                    map(() => ChannelActions.ngrxNoopAction()),
+                    //noop action as channel is created when backend notifies all clients using this.syncService
+                    map(() => ngrxNoopAction()),
                     catchError((error) =>
                         of(ChannelActions.addChannelFailure({ error }))
                     )

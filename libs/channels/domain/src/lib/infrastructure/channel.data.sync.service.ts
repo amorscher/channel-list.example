@@ -4,7 +4,7 @@ import { SYNC_EVENT, SyncAction } from '@channels/domain-entities';
 import { Action, Store } from '@ngrx/store';
 import { ChannelPartialState } from '../+state/channel/channel.reducer';
 import { BehaviorSubject } from 'rxjs';
-import * as ChannelActions from '../+state/channel/channel.actions';
+import { findSyncedAction, ngrxNoopAction } from '@channels/util-ngrx';
 
 @Injectable({
     providedIn: 'root',
@@ -14,7 +14,7 @@ export class ChannelDataSyncService {
      * stream of actions which are dispatched
      */
     dispatchedActions$: BehaviorSubject<object & Action> = new BehaviorSubject(
-        ChannelActions.ngrxNoopAction()
+        ngrxNoopAction()
     );
 
     /**
@@ -34,9 +34,7 @@ export class ChannelDataSyncService {
     public initSync() {
         //listen on the socket
         this.socket.on(SYNC_EVENT, (syncAction: SyncAction<string, object>) => {
-            const actionCreator = ChannelActions.findSyncedAction(
-                syncAction.type
-            );
+            const actionCreator = findSyncedAction(syncAction.type);
             //we have an an actionCreator for synchronization so we dispatch the action
             if (actionCreator) {
                 const action = actionCreator(syncAction.args);
