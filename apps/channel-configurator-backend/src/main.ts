@@ -3,7 +3,11 @@
  * This is only a minimal backend to get started.
  */
 
-import { Channel, createAddChannelSyncAction } from '@channels/domain-entities';
+import {
+    Channel,
+    SYNC_EVENT,
+    createAddChannelSyncAction,
+} from '@channels/domain-entities';
 import express from 'express';
 import * as path from 'path';
 import { Server } from 'http';
@@ -64,7 +68,7 @@ app.post('/api/channels', (req, res) => {
 
     const channelWithId = { ...newChannel, id: ++idCount };
     logger.info(`Received a `, { payload: req.body });
-    io.emit('sync', createAddChannelSyncAction(channelWithId));
+    io.emit(SYNC_EVENT, createAddChannelSyncAction(channelWithId));
     //we just send it back with a created id
     res.send(channelWithId);
 });

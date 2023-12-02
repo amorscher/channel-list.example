@@ -1,3 +1,5 @@
+export const SYNC_EVENT = 'sync';
+
 /**
  * Generic types and functions for sync actions
  */
