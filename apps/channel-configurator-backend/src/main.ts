@@ -3,36 +3,37 @@
  * This is only a minimal backend to get started.
  */
 
-import { Channel } from '@channels/domain';
+import {
+    Channel,
+    SYNC_EVENT,
+    createAddChannelSyncAction,
+} from '@channels/domain-entities';
 import express from 'express';
 import * as path from 'path';
-import { createLogger, transports, format } from 'winston';
-
-const logger = createLogger({
-    // Log only if level is less than (meaning more severe) or equal to this
-    level: 'info',
-    // Use timestamp and printf to create a standard log format
-    format: format.combine(
-        format.timestamp(),
-        format.printf(
-            (info) =>
-                `${info.timestamp} ${info.level}: ${info.message} ${
-                    info.payload ? JSON.stringify(info.payload) : ''
-                }`
-        )
-    ),
-    // Log to the console and a file
-    transports: [
-        new transports.Console(),
-        new transports.File({ filename: 'logs/app.log' }),
-    ],
-});
+import { Server } from 'http';
+import socketIO from 'socket.io';
+import { logger } from './logger';
 
 export const app = express();
 
 const producedChannels = process.env.NR_CHANNELS
     ? parseInt(process.env.NR_CHANNELS)
     : 1_000;
+
+let idCount = producedChannels;
+
+const server = new Server(app);
+
+const io = new socketIO.Server(server, {
+    path: '/api/sync',
+});
+io.on('connection', (socket: socketIO.Socket) => {
+    console.log('a user connected : ' + socket.id);
+
+    socket.on('disconnect', function () {
+        console.log('socket disconnected : ' + socket.id);
+    });
+});
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use(express.json());
@@ -64,13 +65,17 @@ app.get('/api/channels', (req, res) => {
 
 app.post('/api/channels', (req, res) => {
     const newChannel: Channel = req.body as Channel;
+
+    const channelWithId = { ...newChannel, id: ++idCount };
     logger.info(`Received a `, { payload: req.body });
-    //we just send it back
-    res.send(newChannel);
+    io.emit(SYNC_EVENT, createAddChannelSyncAction(channelWithId));
+    //we just send it back with a created id
+    res.send(channelWithId);
 });
 
 const port = process.env.PORT || 3333;
-const server = app.listen(port, () => {
+
+server.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/api`);
 });
 server.on('error', console.error);

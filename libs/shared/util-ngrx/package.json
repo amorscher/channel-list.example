@@ -1,0 +1,8 @@
+{
+    "name": "@channels/util-ngrx",
+    "version": "0.0.1",
+    "peerDependencies": {
+        "@ngrx/store": "^17.0.0"
+    },
+    "sideEffects": false
+}

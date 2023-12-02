@@ -1,0 +1,37 @@
+{
+    "name": "channels-entities",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/channels/entities/src",
+    "projectType": "library",
+    "targets": {
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/libs/channels/entities",
+                "tsConfig": "libs/channels/entities/tsconfig.lib.json",
+                "packageJson": "libs/channels/entities/package.json",
+                "main": "libs/channels/entities/src/index.ts",
+                "assets": ["libs/channels/entities/*.md"]
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": [
+                    "libs/channels/entities/**/*.ts",
+                    "libs/channels/entities/package.json"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "libs/channels/entities/jest.config.ts"
+            }
+        }
+    },
+    "tags": ["type:util", "domain:channels"]
+}

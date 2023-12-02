@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChannelDataSyncService should sync multiple channel created by other clients 1`] = `
+{
+  "newChannel": {
+    "description": "test",
+    "id": 9,
+    "name": "test",
+    "type": "DigitalInput",
+  },
+  "type": "[Channel] Add Channel Success",
+}
+`;
+
+exports[`ChannelDataSyncService should sync one add channel created by other client 1`] = `
+{
+  "newChannel": {
+    "description": "test",
+    "id": 1234,
+    "name": "test",
+    "type": "DigitalInput",
+  },
+  "type": "[Channel] Add Channel Success",
+}
+`;

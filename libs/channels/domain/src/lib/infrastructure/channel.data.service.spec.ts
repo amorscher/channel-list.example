@@ -7,7 +7,7 @@ import { TestBed } from '@angular/core/testing';
 import { MockedHttpClient } from '@channels/test-utils';
 import { ChannelDataService } from './channel.data.service';
 import { take, firstValueFrom } from 'rxjs';
-import { Channel } from '../entities/channel';
+import { Channel } from '@channels/domain-entities';
 
 describe('ChannelDataService', () => {
     let itemUnderTest: ChannelDataService;

@@ -16,10 +16,14 @@
         "baseUrl": ".",
         "paths": {
             "@channels/domain": ["libs/channels/domain/src/index.ts"],
+            "@channels/domain-entities": [
+                "libs/channels/entities/src/index.ts"
+            ],
             "@channels/feature-channel-list": [
                 "libs/channels/feature-channel-list/src/index.ts"
             ],
-            "@channels/test-utils": ["libs/shared/util-test/src/index.ts"]
+            "@channels/test-utils": ["libs/shared/util-test/src/index.ts"],
+            "@channels/util-ngrx": ["libs/shared/util-ngrx/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

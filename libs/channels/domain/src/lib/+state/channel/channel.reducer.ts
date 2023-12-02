@@ -2,7 +2,7 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as ChannelActions from './channel.actions';
-import { Channel } from '../../entities/channel';
+import { Channel } from '@channels/domain-entities';
 
 export const CHANNEL_FEATURE_KEY = 'channels-channel';
 

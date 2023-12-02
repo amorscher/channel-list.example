@@ -1,5 +1,10 @@
 import { createAction, props } from '@ngrx/store';
-import { Channel } from '../../entities/channel';
+import {
+    ADD_CHANNEL_SUCCESS_ACTION,
+    AddChannelSuccessActionParams,
+    Channel,
+} from '@channels/domain-entities';
+import { createSyncedAction } from '@channels/util-ngrx';
 
 export const loadChannel = createAction('[Channel] Load Channel');
 
@@ -18,9 +23,9 @@ export const addChannel = createAction(
     props<{ newChannel: Channel }>()
 );
 
-export const addChannelSuccess = createAction(
-    '[Channel] Add Channel Success',
-    props<{ newChannel: Channel }>()
+export const addChannelSuccess = createSyncedAction(
+    ADD_CHANNEL_SUCCESS_ACTION,
+    props<AddChannelSuccessActionParams>()
 );
 
 export const addChannelFailure = createAction(
