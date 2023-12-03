@@ -70,7 +70,7 @@ describe('ChannelDataSyncService', () => {
         fakeServerEmit(
             SYNC_EVENT,
             createAddChannelSyncAction({
-                id: 1234,
+                id: (1234).toString(),
                 name: 'test',
                 description: 'test',
                 type: 'DigitalInput',
@@ -99,7 +99,7 @@ describe('ChannelDataSyncService', () => {
             fakeServerEmit(
                 SYNC_EVENT,
                 createAddChannelSyncAction({
-                    id: index,
+                    id: index.toString(),
                     name: 'test',
                     description: 'test',
                     type: 'DigitalInput',

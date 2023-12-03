@@ -13,14 +13,13 @@ import * as path from 'path';
 import { Server } from 'http';
 import socketIO from 'socket.io';
 import { logger } from './logger';
+import { v4 as uuidv4 } from 'uuid';
 
 export const app = express();
 
 const producedChannels = process.env.NR_CHANNELS
     ? parseInt(process.env.NR_CHANNELS)
     : 1_000;
-
-let idCount = producedChannels;
 
 const server = new Server(app);
 
@@ -53,7 +52,7 @@ app.get('/api/channels', (req, res) => {
     //lets create 100 channels for testing
     for (let index = 0; index < producedChannels; index++) {
         const channel: Channel = {
-            id: index,
+            id: uuidv4(),
             name: `Name${index}`,
             description: `desc${index}`,
             type: 'DI',
@@ -66,7 +65,11 @@ app.get('/api/channels', (req, res) => {
 app.post('/api/channels', (req, res) => {
     const newChannel: Channel = req.body as Channel;
 
-    const channelWithId = { ...newChannel, id: ++idCount };
+    const channelWithId = {
+        ...newChannel,
+        id: uuidv4(),
+        creationDate: new Date().getTime(),
+    };
     logger.info(`Received a `, { payload: req.body });
     io.emit(SYNC_EVENT, createAddChannelSyncAction(channelWithId));
     //we just send it back with a created id

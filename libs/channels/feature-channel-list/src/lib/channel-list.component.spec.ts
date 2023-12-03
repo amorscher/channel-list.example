@@ -37,7 +37,7 @@ class ChannelDataServiceMock {
         //lets create 100 channels for testing
         for (let index = 0; index < this.numberOfChannels; index++) {
             const channel: Channel = {
-                id: index,
+                id: index.toString(),
                 name: `Name${index}`,
                 description: `desc${index}`,
                 type: 'DI',
