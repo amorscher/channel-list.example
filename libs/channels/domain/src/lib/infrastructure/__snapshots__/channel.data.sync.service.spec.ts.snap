@@ -4,7 +4,7 @@ exports[`ChannelDataSyncService should sync multiple channel created by other cl
 {
   "newChannel": {
     "description": "test",
-    "id": 9,
+    "id": "9",
     "name": "test",
     "type": "DigitalInput",
   },
@@ -16,7 +16,7 @@ exports[`ChannelDataSyncService should sync one add channel created by other cli
 {
   "newChannel": {
     "description": "test",
-    "id": 1234,
+    "id": "1234",
     "name": "test",
     "type": "DigitalInput",
   },
