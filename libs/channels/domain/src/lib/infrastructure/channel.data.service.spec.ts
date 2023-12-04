@@ -45,7 +45,7 @@ describe('ChannelDataService', () => {
         const headers = new HttpHeaders().set('Accept', 'application/json');
         headers.set('Content-type', 'application/json');
         const newChannel: Channel = {
-            id: -1,
+            id: (-1).toString(),
             name: 'name',
             description: 'desc',
             type: 'DigitalInput',

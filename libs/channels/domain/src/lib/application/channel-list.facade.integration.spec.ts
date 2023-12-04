@@ -20,7 +20,7 @@ class ChannelDataServiceMock {
         //lets create 100 channels for testing
         for (let index = 0; index < this.numberOfChannels; index++) {
             const channel: Channel = {
-                id: index,
+                id: index.toString(),
                 name: `Name${index}`,
                 description: `desc${index}`,
                 type: 'DI',
@@ -76,7 +76,7 @@ describe('ChannelListFacade.integration', () => {
         await lastValueFrom(itemUnderTest.channelList$.pipe(take(1)));
         //WHEN --> just load
         itemUnderTest.addChannel({
-            id: -1,
+            id: (-1).toString(),
             name: 'name',
             description: 'desc',
             type: 'DigitalInput',

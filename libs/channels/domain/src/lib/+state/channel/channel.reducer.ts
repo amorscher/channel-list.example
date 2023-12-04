@@ -17,7 +17,9 @@ export interface ChannelPartialState {
 }
 
 export const channelAdapter: EntityAdapter<Channel> =
-    createEntityAdapter<Channel>({ sortComparer: (a, b) => b.id - a.id }); // ok we sort at the top
+    createEntityAdapter<Channel>({
+        sortComparer: (a, b) => (b.creationDate ?? 0) - (a.creationDate ?? 0),
+    }); // ok we sort at the top
 
 export const initialState: State = channelAdapter.getInitialState({
     // set initial required properties
