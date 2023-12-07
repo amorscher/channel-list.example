@@ -1,0 +1,19 @@
+<div class="header-space"></div>
+<div class="main">
+    <div class="header">
+        <div class="left left-flex-middle">
+            <ng-content select="[left-header]"></ng-content>
+        </div>
+        <div><ng-content select="[header]"></ng-content></div>
+        <div class="flex-spacer"></div>
+        <div class="header-right">
+            <ng-content select="[right-header]"></ng-content>
+        </div>
+    </div>
+    <div class="content">
+        <ng-content select="[content]"></ng-content>
+    </div>
+    <div class="footer">
+        <ng-content select="[footer]"></ng-content>
+    </div>
+</div>

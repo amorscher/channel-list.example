@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { ChannelsFeatureChannelListModule } from '@channels/feature-channel-list';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedUiBaseComponentsModule } from '@channels/ui-base-components';
 
 @NgModule({
     declarations: [AppComponent, NxWelcomeComponent],
@@ -22,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
         }),
         EffectsModule.forRoot(),
         ChannelsFeatureChannelListModule,
+        SharedUiBaseComponentsModule,
+
         HttpClientModule,
     ],
     providers: [],

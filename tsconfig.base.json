@@ -23,6 +23,9 @@
                 "libs/channels/feature-channel-list/src/index.ts"
             ],
             "@channels/test-utils": ["libs/shared/util-test/src/index.ts"],
+            "@channels/ui-base-components": [
+                "libs/shared/ui-base-components/src/index.ts"
+            ],
             "@channels/util-ngrx": ["libs/shared/util-ngrx/src/index.ts"]
         }
     },

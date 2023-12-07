@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'themes';
+@import '@angular/cdk/overlay-prebuilt.css';
+
+button {
+    margin: 1em 0;
+    padding: 0.5em;
+    background-color: var(--button);
+    color: var(--button-text);
+    border-radius: 0.5em;
+    border: none;
+    border-color: var (-- secondary);
+    text-decoration: none;
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: var(--tertiary);
+        color: var(--button-text);
+    }
+}
+
+body {
+    font-family: proxima-nova, sans-serif;
+    margin: 0;
+    background-color: var(--background);
+    color: var(--headline);
+}
+
+h1 {
+    color: var(--headline);
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    filter: brightness(60%);
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    background-color: var(--secondary);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    background-color: var(--tertiary);
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--main);
+}

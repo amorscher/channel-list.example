@@ -1,3 +1,34 @@
 <!-- <channel-list-nx-welcome></channel-list-nx-welcome>
 <router-outlet></router-outlet> -->
-<channels-channel-list></channels-channel-list>
+
+<main-layout>
+    <!-- HEADER-->
+    <img class="header-logo-big" src="/assets/chip.png" left-header />
+    <h1 header>Channel Configurator</h1>
+    <ng-container right-header>
+        <theme-picker [themes]="themes"></theme-picker>
+        <a href="https://github.com/amorscher/channel-list.example">
+            <h3 style="display: flex; align-items: center">
+                <img
+                    class="header-logo"
+                    src="/assets/github-circle-white-transparent.svg"
+                />
+                GitHub
+            </h3>
+        </a>
+    </ng-container>
+
+    <!--CONTENT-->
+    <ng-container content>
+        <div class="left"></div>
+        <div class="middle">
+            <channels-channel-list></channels-channel-list>
+        </div>
+    </ng-container>
+
+    <!--FOOTER-->
+    <ng-container footer>
+        <div class="flex-spacer"></div>
+        <h3>© 2023</h3>
+    </ng-container>
+</main-layout>
