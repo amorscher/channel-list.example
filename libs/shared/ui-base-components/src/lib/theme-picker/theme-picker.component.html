@@ -1,0 +1,41 @@
+<button
+    (click)="isOpen = !isOpen"
+    cdkOverlayOrigin
+    #originOverlay="cdkOverlayOrigin"
+>
+    <img style="height: 22px" src="/assets/icons8-color-palette-48.png" />
+</button>
+<!-- This template displays the overlay content and is connected to the button -->
+<ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="originOverlay"
+    [cdkConnectedOverlayOpen]="isOpen"
+    [cdkConnectedOverlayPositions]="positionPairs"
+    [cdkConnectedOverlayHasBackdrop]="isOpen"
+    [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop-cs'"
+    (backdropClick)="isOpen = !isOpen"
+>
+    <div class="theme-container">
+        <form [formGroup]="form">
+            <fieldset>
+                @for (theme of themes; track theme.id) {
+                <div class="theme-color-container">
+                    <input
+                        class="theme-color-radio"
+                        type="radio"
+                        [id]="theme.id"
+                        [value]="theme.id"
+                        formControlName="selectedTheme"
+                    />
+                    <label [for]="theme.id"> {{ theme.name }}</label>
+                    <div class="theme-color-flex-spacer"></div>
+                    <div
+                        class="theme-color-display"
+                        [ngStyle]="{ 'background-color': theme.color }"
+                    ></div>
+                </div>
+                }
+            </fieldset>
+        </form>
+    </div>
+</ng-template>

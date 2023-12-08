@@ -1,0 +1,68 @@
+:host {
+    .main {
+        height: 98vh;
+        display: flex;
+
+        /* Direction of the items, can be row or column */
+        flex-direction: column;
+    }
+
+    .header {
+        background-color: var(--secondary);
+        margin: 0px;
+        padding-left: 10px;
+        display: flex;
+        border-bottom: 2px solid var(--paragraph);
+    }
+
+    .header-space {
+        background-color: var(--background);
+        padding: 10px;
+        height: 5px;
+    }
+
+    .content {
+        padding: 10px;
+        flex: 1;
+        display: flex;
+    }
+
+    .footer {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        background-color: var(--secondary);
+        color: var(--main);
+        padding-right: 20px;
+        border-top: 2px solid var(--paragraph);
+    }
+
+    .left {
+        width: 10%;
+    }
+
+    .left-flex-middle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .middle {
+        width: 80%;
+    }
+
+    .right {
+        width: 10%;
+    }
+    .flex-spacer {
+        flex-grow: 1;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
+        flex-direction: row;
+        margin-right: 10px;
+    }
+}

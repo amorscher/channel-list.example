@@ -1,16 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import {
-    CHANNEL_FEATURE_KEY,
-    State,
-    ChannelPartialState,
-    channelAdapter,
-} from './channel.reducer';
+import { CHANNEL_FEATURE_KEY, State, channelAdapter } from './channel.reducer';
 
 // Lookup the 'Channel' feature state managed by NgRx
-export const getChannelState = createFeatureSelector<
-    ChannelPartialState,
-    State
->(CHANNEL_FEATURE_KEY);
+export const getChannelState =
+    createFeatureSelector<State>(CHANNEL_FEATURE_KEY);
 
 const { selectAll, selectEntities } = channelAdapter.getSelectors();
 

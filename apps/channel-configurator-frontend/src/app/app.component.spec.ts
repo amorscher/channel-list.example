@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { ChannelsDomainModule } from '@channels/domain';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedUiBaseComponentsModule } from '@channels/ui-base-components';
 
 describe('AppComponent', () => {
     beforeEach(async () => {
@@ -18,6 +19,7 @@ describe('AppComponent', () => {
                 EffectsModule.forRoot([]),
                 StoreModule.forRoot(),
                 ChannelsDomainModule,
+                SharedUiBaseComponentsModule,
             ],
             declarations: [AppComponent, NxWelcomeComponent],
         }).compileComponents();
@@ -28,7 +30,7 @@ describe('AppComponent', () => {
         fixture.detectChanges();
         const compiled = fixture.nativeElement as HTMLElement;
         expect(compiled.querySelector('h1')?.textContent).toContain(
-            'channels-channel-list'
+            'Channel Configurator'
         );
     });
 
