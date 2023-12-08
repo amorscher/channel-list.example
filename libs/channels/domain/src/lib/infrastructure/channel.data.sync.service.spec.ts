@@ -7,42 +7,13 @@ import { TestBed } from '@angular/core/testing';
 import { ChannelDataSyncService } from './channel.data.sync.service';
 import {
     SYNC_EVENT,
-    SyncAction,
     createAddChannelSyncAction,
 } from '@channels/domain-entities';
 
 import { ChannelsDomainModule } from '../channels-domain.module';
 import { firstValueFrom, lastValueFrom, take } from 'rxjs';
 import { ChannelListFacade } from '../application/channel-list.facade';
-
-/**
- * Mocks the client sockets: just keeps track of all registered listeners
- */
-class ClientSocketMock {
-    public listeners: ((payload: SyncAction<unknown, unknown>) => void)[] = [];
-
-    on(_type: string, listener: () => void) {
-        this.listeners.push(listener);
-    }
-}
-
-const mSocket = new ClientSocketMock();
-
-/**
- * Mocks a server emit by calling all listernes on the client socket
- * @param type
- * @param payload
- */
-const fakeServerEmit = (
-    _type: string,
-    payload: SyncAction<unknown, unknown>
-) => {
-    mSocket.listeners.forEach((listener) => listener(payload));
-};
-// mock socket io client
-jest.mock('socket.io-client', () => {
-    return { io: jest.fn(() => mSocket) };
-});
+import { fakeServerEmit, mSocket } from '../../test-setup';
 
 describe('ChannelDataSyncService', () => {
     let itemUnderTest: ChannelDataSyncService;
