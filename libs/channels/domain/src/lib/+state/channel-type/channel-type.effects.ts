@@ -10,6 +10,7 @@ export class ChannelTypeEffects {
     loadChannelType$ = createEffect(() =>
         this.actions$.pipe(
             ofType(ChannelTypeActions.loadChannelType),
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             switchMap((action) =>
                 this.channelTypeDataService.load().pipe(
                     map((channelType) =>
