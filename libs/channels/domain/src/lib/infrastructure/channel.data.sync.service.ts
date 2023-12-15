@@ -24,8 +24,8 @@ export class ChannelDataSyncService {
 
     constructor(private store: Store<ChannelPartialState>) {
         const socketIOConfig = { path: '/api/sync' };
-
-        this.socket = io(window.location.href, socketIOConfig);
+        //open up the socket on the origin
+        this.socket = io(window.location.origin, socketIOConfig);
     }
 
     /**

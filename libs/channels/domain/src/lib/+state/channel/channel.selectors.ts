@@ -1,5 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CHANNEL_FEATURE_KEY, State, channelAdapter } from './channel.reducer';
+import { getChannelTypeState } from '../channel-type/channel-type.selectors';
+import { ChannelViewModel } from '../../entities/channel-view.model';
 
 // Lookup the 'Channel' feature state managed by NgRx
 export const getChannelState =
@@ -40,4 +42,20 @@ export const getSelected = createSelector(
 export const getUsedIds = createSelector(
     getChannelState,
     (state: State) => state.ids
+);
+
+/**
+ * Selector combining Channel with Channel type providing a view model
+ */
+export const getAllChannelViewModel = createSelector(
+    getAllChannel,
+    getChannelTypeState,
+    (channels, channelTypesState) => {
+        return channels.map((ch) => {
+            return {
+                ...ch,
+                type: channelTypesState.entities[ch.type],
+            } as ChannelViewModel;
+        });
+    }
 );

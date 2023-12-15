@@ -5,6 +5,7 @@
 
 import {
     Channel,
+    ChannelType,
     SYNC_EVENT,
     createAddChannelSyncAction,
 } from '@channels/domain-entities';
@@ -19,7 +20,7 @@ export const app = express();
 
 const producedChannels = process.env.NR_CHANNELS
     ? parseInt(process.env.NR_CHANNELS)
-    : 1_000;
+    : 100;
 
 const server = new Server(app);
 
@@ -60,6 +61,18 @@ app.get('/api/channels', (req, res) => {
         channels.push(channel);
     }
     res.send(channels);
+});
+
+app.get('/api/channeltypes', (req, res) => {
+    const channelTypes: ChannelType[] = [];
+    const channel: ChannelType = {
+        id: 'DI',
+        name: `Digital Input`,
+        description: `Description of the digital input`,
+    };
+    channelTypes.push(channel);
+
+    res.send(channelTypes);
 });
 
 app.post('/api/channels', (req, res) => {

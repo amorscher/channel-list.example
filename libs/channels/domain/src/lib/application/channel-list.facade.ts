@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
 import { loadChannel, addChannel } from '../+state/channel/channel.actions';
-import * as fromChannel from '../+state/channel/channel.reducer';
 import * as ChannelSelectors from '../+state/channel/channel.selectors';
 import { Channel } from '@channels/domain-entities';
 
@@ -17,7 +16,11 @@ export class ChannelListFacade {
     selectedChannel$ = this.store.pipe(select(ChannelSelectors.getSelected));
     ids$ = this.store.pipe(select(ChannelSelectors.getUsedIds));
 
-    constructor(private store: Store<fromChannel.ChannelPartialState>) {}
+    loadedWithViewModel$ = this.store.pipe(
+        select(ChannelSelectors.getAllChannelViewModel)
+    );
+
+    constructor(private store: Store) {}
 
     /**
      * Loads all the channels

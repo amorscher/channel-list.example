@@ -4,7 +4,16 @@
 <main-layout>
     <!-- HEADER-->
     <img class="header-logo-big" src="/assets/chip.png" left-header />
-    <h1 header>Channel Configurator</h1>
+    <ng-container header>
+        <h1 header>Channel Configurator</h1>
+        <div class="menu">
+            <a routerLink="/channels" routerLinkActive="active"> Channels</a>
+            <div>|</div>
+            <a routerLink="/channeltypes" routerLinkActive="active">
+                Channel Types</a
+            >
+        </div>
+    </ng-container>
     <ng-container right-header>
         <theme-picker [themes]="themes"></theme-picker>
         <a href="https://github.com/amorscher/channel-list.example">
@@ -22,7 +31,7 @@
     <ng-container content>
         <div class="left"></div>
         <div class="middle">
-            <channels-channel-list></channels-channel-list>
+            <router-outlet></router-outlet>
         </div>
     </ng-container>
 
