@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ChannelListFacade } from '@channels/domain';
-import { Channel } from '@channels/domain-entities';
+import {
+    ChannelListFacade,
+    ChannelTypesListFacade,
+    ChannelViewModel,
+} from '@channels/domain';
 
 @Component({
     selector: 'channels-channel-list',
@@ -14,9 +17,12 @@ export class ChannelListComponent implements OnInit {
         minBufferInPx: 100,
         maxBufferInPx: 150,
     };
-    channelList$ = this.channelListFacade.channelList$;
+    channelList$ = this.channelListFacade.loadedWithViewModel$;
 
-    constructor(private channelListFacade: ChannelListFacade) {}
+    constructor(
+        private channelListFacade: ChannelListFacade,
+        private channelTypeFacade: ChannelTypesListFacade
+    ) {}
 
     ngOnInit() {
         this.load();
@@ -24,9 +30,10 @@ export class ChannelListComponent implements OnInit {
 
     load(): void {
         this.channelListFacade.load();
+        this.channelTypeFacade.load();
     }
 
-    trackBy(index: number, item: Channel): string {
+    trackBy(index: number, item: ChannelViewModel): string {
         return item.id;
     }
 
@@ -35,7 +42,7 @@ export class ChannelListComponent implements OnInit {
             id: (-1).toString(),
             name: 'defaultName',
             description: 'defaultDesc',
-            type: 'DigitalInput',
+            type: 'DI',
         });
     }
 }

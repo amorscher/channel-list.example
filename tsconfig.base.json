@@ -22,6 +22,9 @@
             "@channels/feature-channel-list": [
                 "libs/channels/feature-channel-list/src/index.ts"
             ],
+            "@channels/feature-channel-type-list": [
+                "libs/channels/feature-channel-types-list/src/index.ts"
+            ],
             "@channels/test-utils": ["libs/shared/util-test/src/index.ts"],
             "@channels/ui-base-components": [
                 "libs/shared/ui-base-components/src/index.ts"

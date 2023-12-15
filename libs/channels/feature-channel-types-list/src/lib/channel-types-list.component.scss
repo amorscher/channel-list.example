@@ -1,0 +1,23 @@
+.channel-list-table {
+    padding: 10px;
+    display: block;
+    min-height: 200px;
+    border: 1px solid;
+}
+
+.channel-list-viewport {
+    // overflow-y: scroll;
+    border: 1px solid;
+}
+
+.channel-list-cell {
+    width: 10%;
+}
+
+.channel-list-row {
+    height: 25px;
+}
+
+tr:hover td {
+    background-color: var(--tertiary); /* or #000 */
+}

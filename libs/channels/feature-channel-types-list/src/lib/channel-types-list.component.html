@@ -1,0 +1,12 @@
+<h1>Channel Types</h1>
+
+<table class="channel-list-table">
+    <tr
+        *ngFor="let channelType of channelTypeList$ | async"
+        class="channel-list-row"
+    >
+        <td class="channel-list-cell">{{ channelType.id }}</td>
+        <td class="channel-list-cell">{{ channelType.name }}</td>
+        <td class="channel-list-cell">{{ channelType.description }}</td>
+    </tr>
+</table>
