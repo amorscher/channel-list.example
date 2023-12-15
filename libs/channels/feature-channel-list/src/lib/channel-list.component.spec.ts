@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import {
     ChannelDataService,
     ChannelListFacade,
+    ChannelTypeDataService,
     ChannelsDomainModule,
 } from '@channels/domain';
 import { EffectsModule } from '@ngrx/effects';
@@ -27,7 +28,7 @@ import {
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
 import { dispatchFakeEvent } from '@channels/test-utils';
-import { Channel } from '@channels/domain-entities';
+import { Channel, ChannelType } from '@channels/domain-entities';
 
 class ChannelDataServiceMock {
     constructor(private numberOfChannels = 200) {}
@@ -48,6 +49,24 @@ class ChannelDataServiceMock {
     }
 }
 
+class ChannelTypeDataServiceMock {
+    constructor(private numberOfTypes = 10) {}
+
+    load(): Observable<ChannelType[]> {
+        const channelTypes: ChannelType[] = [];
+        //lets create 100 channels for testing
+        for (let index = 0; index < this.numberOfTypes; index++) {
+            const channel: ChannelType = {
+                id: index.toString(),
+                name: `Name${index}`,
+                description: `desc${index}`,
+            };
+            channelTypes.push(channel);
+        }
+        return of(channelTypes);
+    }
+}
+
 describe('ChannelListComponent', () => {
     let fixture: ComponentFixture<ChannelListComponent>;
     let application: ChannelListFacade;
@@ -65,6 +84,10 @@ describe('ChannelListComponent', () => {
                 {
                     provide: ChannelDataService,
                     useClass: ChannelDataServiceMock,
+                },
+                {
+                    provide: ChannelTypeDataService,
+                    useClass: ChannelTypeDataServiceMock,
                 },
             ],
             declarations: [ChannelListComponent],
