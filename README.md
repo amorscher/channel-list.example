@@ -8,7 +8,7 @@ This repo can be used as an example for setting up large scale angular applicati
 
 Use following command to run the example:
 
-> npx nx serve-test channels-configurator-frontend
+> npx nx serve-test channel-configurator-frontend
 
 ## Repository Setup
 
