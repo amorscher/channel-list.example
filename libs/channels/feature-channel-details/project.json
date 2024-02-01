@@ -1,0 +1,44 @@
+{
+    "name": "channels-feature-channel-details",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/channels/feature-channel-details/src",
+    "prefix": "channels",
+    "tags": ["domain:channels", "type:feature"],
+    "projectType": "library",
+    "targets": {
+        "build": {
+            "executor": "@nx/angular:package",
+            "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+            "options": {
+                "project": "libs/channels/feature-channel-details/ng-package.json"
+            },
+            "configurations": {
+                "production": {
+                    "tsConfig": "libs/channels/feature-channel-details/tsconfig.lib.prod.json"
+                },
+                "development": {
+                    "tsConfig": "libs/channels/feature-channel-details/tsconfig.lib.json"
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "libs/channels/feature-channel-details/jest.config.ts"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": [
+                    "libs/channels/feature-channel-details/**/*.ts",
+                    "libs/channels/feature-channel-details/**/*.html",
+                    "libs/channels/feature-channel-details/package.json"
+                ]
+            }
+        }
+    }
+}

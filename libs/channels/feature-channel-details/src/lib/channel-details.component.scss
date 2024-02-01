@@ -1,0 +1,18 @@
+.channel-form {
+    display: flex;
+
+    /* Direction of the items, can be row or column */
+    flex-direction: column;
+
+}
+.form-label{
+    min-width: 300px;
+    display: block; width: 100px;
+}
+
+.form-element{
+    padding: 10px;
+}
+
+
+

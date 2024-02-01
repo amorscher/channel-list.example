@@ -2,20 +2,14 @@
 
 <button (click)="addChannel()">Add Channel</button>
 
-<cdk-virtual-scroll-viewport
-    [itemSize]="virtualScrollConfig.itemSizeInPx"
-    class="channel-list-viewport"
-    [ngStyle]="{ height: virtualScrollConfig.sizeInPx + 'px' }"
-    [minBufferPx]="virtualScrollConfig.minBufferInPx"
-    [maxBufferPx]="virtualScrollConfig.maxBufferInPx"
-    ><table class="channel-list-table">
-        <tr
-            class="channel-list-row"
-            *cdkVirtualFor="
+<cdk-virtual-scroll-viewport [itemSize]="virtualScrollConfig.itemSizeInPx" class="channel-list-viewport"
+    [ngStyle]="{ height: virtualScrollConfig.sizeInPx + 'px' }" [minBufferPx]="virtualScrollConfig.minBufferInPx"
+    [maxBufferPx]="virtualScrollConfig.maxBufferInPx">
+    <table class="channel-list-table">
+        <tr [routerLink]="channel.id" class="channel-list-row" *cdkVirtualFor="
                 let channel of channelList$ | async;
                 trackBy: trackBy
-            "
-        >
+            ">
             <td class="channel-list-cell">{{ channel.id }}</td>
             <td class="channel-list-cell">{{ channel.name }}</td>
             <td class="channel-list-cell">{{ channel.description }}</td>

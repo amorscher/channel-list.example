@@ -1,0 +1,24 @@
+<h1>Details of {{selectedChannel()?.name}} </h1>
+
+
+<pre>{{selectedChannel()|json}}</pre>
+
+
+<form [formGroup]="channelForm" class="channel-form">
+
+    <div class="form-element">
+        <label class="form-label" for="name">Name: </label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+    <div class="form-element">
+        <label class="form-label" for="description">Description: </label>
+        <textarea formControlName="description" rows="5" cols="60" name="description">
+
+         </textarea>
+    </div>
+</form>
+
+
+
+
+<button (click)="updateChannel()">Update Channel</button>
