@@ -4,6 +4,7 @@ import {
     ChannelTypesListFacade,
     ChannelViewModel,
 } from '@channels/domain';
+import { take } from 'rxjs';
 
 @Component({
     selector: 'channels-channel-list',
@@ -22,15 +23,23 @@ export class ChannelListComponent implements OnInit {
     constructor(
         private channelListFacade: ChannelListFacade,
         private channelTypeFacade: ChannelTypesListFacade
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.load();
     }
 
     load(): void {
-        this.channelListFacade.load();
-        this.channelTypeFacade.load();
+        this.channelListFacade.loaded$.pipe(
+            take(1)
+        )
+            .subscribe(loaded => {
+                if (!loaded) {
+                    this.channelListFacade.load();
+                    this.channelTypeFacade.load();
+                }
+            })
+
     }
 
     trackBy(index: number, item: ChannelViewModel): string {

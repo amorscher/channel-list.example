@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ChannelsFeatureChannelListModule } from '@channels/feature-channel-list';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedUiBaseComponentsModule } from '@channels/ui-base-components';
+import { ChannelsFeatureChannelDetailsModule } from '@channels/feature-channel-details';
 
 @NgModule({
     declarations: [AppComponent, NxWelcomeComponent],
@@ -26,8 +27,9 @@ import { SharedUiBaseComponentsModule } from '@channels/ui-base-components';
         SharedUiBaseComponentsModule,
 
         HttpClientModule,
+        ChannelsFeatureChannelDetailsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

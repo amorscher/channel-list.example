@@ -19,6 +19,9 @@
             "@channels/domain-entities": [
                 "libs/channels/entities/src/index.ts"
             ],
+            "@channels/feature-channel-details": [
+                "libs/channels/feature-channel-details/src/index.ts"
+            ],
             "@channels/feature-channel-list": [
                 "libs/channels/feature-channel-list/src/index.ts"
             ],

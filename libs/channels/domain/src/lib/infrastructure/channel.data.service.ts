@@ -8,7 +8,7 @@ import { Channel } from '@channels/domain-entities';
  */
 @Injectable({ providedIn: 'root' })
 export class ChannelDataService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     load(): Observable<Channel[]> {
         const url = '/api/channels';
@@ -20,5 +20,12 @@ export class ChannelDataService {
         const headers = new HttpHeaders().set('Accept', 'application/json');
         headers.set('Content-type', 'application/json');
         return this.http.post<Channel>(url, newChannel, { headers });
+    }
+
+    update(update: Channel) {
+        const url = `/api/channels/${update.id}`;
+        const headers = new HttpHeaders().set('Accept', 'application/json');
+        headers.set('Content-type', 'application/json');
+        return this.http.patch<Channel>(url, update, { headers });
     }
 }

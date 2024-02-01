@@ -39,6 +39,11 @@ export const getSelected = createSelector(
     (entities, selectedId) => selectedId && entities[selectedId]
 );
 
+export const getChannelById = (uid: string) => createSelector(
+    getChannelEntities,
+    (entities) => entities[uid]
+);
+
 export const getUsedIds = createSelector(
     getChannelState,
     (state: State) => state.ids

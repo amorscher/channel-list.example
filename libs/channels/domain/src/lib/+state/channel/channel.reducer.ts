@@ -46,9 +46,22 @@ const channelReducer = createReducer(
             error: null,
         };
     }),
+
+    on(ChannelActions.updateChannel, (state) => {
+        return {
+            ...state,
+            error: null,
+        };
+    }),
+
+    on(ChannelActions.updateChannelSuccess, (state, { updatedChannel }) =>
+        channelAdapter.updateOne({ id: updatedChannel.id, changes: { ...updatedChannel } }, { ...state })
+    ),
+
     on(ChannelActions.addChannelSuccess, (state, { newChannel }) =>
         channelAdapter.addOne(newChannel, { ...state })
     ),
+
     on(ChannelActions.addChannelFailure, (state, { error }) => ({
         ...state,
         error,

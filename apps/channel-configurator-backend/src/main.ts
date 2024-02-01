@@ -8,6 +8,7 @@ import {
     ChannelType,
     SYNC_EVENT,
     createAddChannelSyncAction,
+    createUpdateChannelSyncAction,
 } from '@channels/domain-entities';
 import express from 'express';
 import * as path from 'path';
@@ -60,6 +61,7 @@ app.get('/api/channels', (req, res) => {
         };
         channels.push(channel);
     }
+    channels[0].id = "fixed-uuid";
     res.send(channels);
 });
 
@@ -87,6 +89,15 @@ app.post('/api/channels', (req, res) => {
     io.emit(SYNC_EVENT, createAddChannelSyncAction(channelWithId));
     //we just send it back with a created id
     res.send(channelWithId);
+});
+
+app.patch('/api/channels/:id', (req, res) => {
+
+    const toUpdate: Channel = req.body as Channel;
+    logger.info(`Received a `, { payload: req.body });
+    io.emit(SYNC_EVENT, createUpdateChannelSyncAction(toUpdate));
+    //we just send it back with a created id
+    res.send(toUpdate);
 });
 
 const port = process.env.PORT || 3333;

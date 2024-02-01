@@ -47,6 +47,23 @@ export class ChannelEffects {
         )
     );
 
+    updateChannel$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(ChannelActions.updateChannel),
+            withLatestFrom(this.store.select(ChannelSelectors.getUsedIds)),
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            switchMap(([action, ids]) =>
+                this.channelDataService.update(action.toUpdate).pipe(
+                    //noop action as channel is created when backend notifies all clients using this.syncService
+                    map(() => ngrxNoopAction()),
+                    catchError((error) =>
+                        of(ChannelActions.addChannelFailure({ error }))
+                    )
+                )
+            )
+        )
+    );
+
     constructor(
         private actions$: Actions,
         private channelDataService: ChannelDataService,
